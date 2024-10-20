@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1 className="my-5 text-center display-4">Latest News</h1>
+      <h1 className="my-5 text-center display-4 modern-heading">Latest News</h1>
       {loading ? (
         <div className="text-center">
           <p>Loading news...</p>
@@ -37,13 +37,13 @@ const App = () => {
         <div className="row">
           {articles.map((article, index) => (
             <div key={index} className="col-md-4 mb-4">
-              <div className="card h-100 w-100 shadow-sm hover-card">
+              <div className="card h-100 shadow-sm modern-card">
                 {article.urlToImage && (
                   <img
                     src={article.urlToImage}
-                    className="card-img-top"
+                    className="card-img-top "
                     alt={article.title}
-                    style={{ height: "300px", objectFit: "cover" }} // Add consistent image sizing
+                    style={{ height: "200px", objectFit: "cover" }}
                   />
                 )}
                 <div className="card-body">
@@ -52,16 +52,17 @@ const App = () => {
                       ? article.title.slice(0, 100) + "..."
                       : article.title}
                   </h5>
-                  <p className="card-text">
+                  <p className="card-text modern-text">
                     {article.description
-                      ? article.description.length > 200
-                        ? article.description.slice(0, 200) + "..."
+                      ? article.description.length > 100
+                        ? article.description.slice(0, 100) + "..."
                         : article.description
                       : "No description available."}
                   </p>
                 </div>
                 <div className="card-footer d-flex justify-content-between align-items-center">
-                  <small className="text-muted">
+                  <small className="text-muted modern-date">
+                    <i className="bi bi-calendar"></i>
                     {new Date(article.publishedAt).toLocaleDateString("en-GB", {
                       day: "2-digit",
                       month: "2-digit",
@@ -70,7 +71,7 @@ const App = () => {
                   </small>
                   <a
                     href={article.url}
-                    className="btn btn-outline-dark btn-sm"
+                    className="btn modern-btn btn-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
